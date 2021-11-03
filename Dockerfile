@@ -1,15 +1,15 @@
-FROM alpine:3.14
+FROM ubuntu:20.04
 
-RUN apk add \
-        nodejs \
-        npm
+RUN apt update \
+      && apt upgrade
 
-RUN apk update \
-      && apk upgrade \
-      && rm -rf /var/lib/apt/lists/*
+RUN apt install -y nodejs
+RUN apt install -y npm
+
+RUN npm install --global yarn
 
 WORKDIR /app
 COPY . .
-RUN npm install
+RUN yarn install
 
-ENTRYPOINT npm run start
+ENTRYPOINT yarn run start
