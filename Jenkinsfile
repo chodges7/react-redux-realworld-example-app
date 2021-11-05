@@ -15,7 +15,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building...'
-                sh 'docker build -t $DOCKER_USER/realworld_frontend:latest ./'
+                sh 'docker build -v /var/run/docker.sock:/var/run/docker.sock -t $DOCKER_USER/realworld_frontend:latest ./'
             }
         }
         stage('Deploy') {
