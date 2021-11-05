@@ -15,13 +15,13 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building...'
-                sh 'docker build -t chodges7/realworld_frontend:latest ./'
+                sh 'docker build -t $DOCKER_USER/realworld_frontend:latest ./'
             }
         }
         stage('Deploy') {
             steps {
                 echo 'Deploying...'
-                sh 'docker push chodges7/realworld_frontend:latest'
+                sh 'docker push $DOCKER_USER/realworld_frontend:latest'
             }
         }
     }
