@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  jenkins:
+    image: chodges7/jenkins:latest
+    volumes:
+      - jenkins_data:/home/myuser
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - "8080:8080"
+
+volumes:
+  jenkins_data:
